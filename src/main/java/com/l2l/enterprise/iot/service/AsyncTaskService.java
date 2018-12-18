@@ -161,7 +161,7 @@ public class AsyncTaskService {
                 vesselDevice.updateStatus("Anchoring");
                 payloadObjectNode.put("msgType", "ANCHORING");
             }
-            changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "VOYAGING_END", vesselDevice);
+//            changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "VOYAGING_END", vesselDevice);
 
             if (stepIdx == vesselDevice.getDestinations().size() - 1) {
                 logger.info("The vessel arrives at the last port --" + arrivalDest);
@@ -189,14 +189,14 @@ public class AsyncTaskService {
                 logger.debug("Current time : " + DateUtil.ms2dateStr(curMs) + " Next time : " + DateUtil.ms2dateStr(nextMs) + "new reach time : " + curDest.getEstiArrivalTime());
                 if (newReachMs > curMs && newReachMs <= nextMs) {
                     vesselDevice.updateStatus("Docking");
-                    changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "ANCHORING_END", vesselDevice);
+//                    changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "ANCHORING_END", vesselDevice);
                 }
             } else if (vesselDevice.getStatus().equals("Docking")) {
                 long newDepartureMs = DateUtil.str2date(curDest.getEstiDepartureTime()).getTime();
                 logger.info("Current time : " + DateUtil.ms2dateStr(curMs) + " Next time : " + DateUtil.ms2dateStr(nextMs) + " New arrival time : " + curDest.getEstiDepartureTime());
                 if (newDepartureMs > curMs && newDepartureMs <= nextMs) {
                     //send depature message to vessel process
-                    changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "DOCKING_END", vesselDevice);
+//                    changeStatus(ioTClient, ioTClient.getUpdateStatusTopic(), "DOCKING_END", vesselDevice);
                     logger.info("Docking  , departure");
                     break;
                 }
@@ -211,6 +211,21 @@ public class AsyncTaskService {
             }
         }
     }
+
+//    public void simuAD_v2(String vid){
+//        IoTClient ioTClient = awsClientService.findDeviceClient(vid);
+//        VesselDevice vesselDevice = ioTClient.getVesselDevice();
+//        //TODO: Timing simulation of anchoring and docking status of the ship
+//        int stepIdx = vesselDevice.getStepIndex();
+//        long zoomVal = commonRepository.getZoomInVal();
+//        long simuMs = DateUtil.str2date(vesselDevice.getStartTime()).getTime();
+//        Destination curDest = vesselDevice.getDestinations().get(stepIdx);
+//        long startMs = DateUtil.str2date(vesselDevice.getStartTime()).getTime();
+//        while(true){
+//            long curMs = (new Date().getTime() - simuMs) * zoomVal + simuMs;
+//            long nextMs = curMs + 1000 * zoomVal;
+//        }
+//    }
 
     public void trackOnce(String vid, int delayHour , int zoomInVal ) throws InterruptedException, AWSIotException, IOException {
         commonRepository.setZoomInVal(zoomInVal);
