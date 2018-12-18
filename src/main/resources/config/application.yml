@@ -127,3 +127,12 @@ logging:
 # ===================================================================
 
 # application:
+#
+#vessel properties
+#
+vessel:
+ vids: vids.csv
+ locations: locations.csv
+
+awsiot:
+ keys: keys.csv
