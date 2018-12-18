@@ -94,8 +94,8 @@ public class CsvUtil {
         while((line=reader.readLine())!=null){
             String[] items= line.split(",");//CSV格式文件为逗号分隔符文件，这里根据逗号切分
             String name = items[0].trim();
-            Double lng = Double.parseDouble(items[1].trim());
-            Double lat = Double.parseDouble(items[2].trim());
+            double lng = Double.parseDouble(items[1].trim());
+            double lat = Double.parseDouble(items[2].trim());
             Location loc = new Location(name , lng, lat);
             locations.add(loc);
         }

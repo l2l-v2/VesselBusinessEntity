@@ -2,15 +2,14 @@ package com.l2l.enterprise.iot.domain;
 
 import com.amazonaws.services.iot.client.AWSIotDevice;
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lombok.ToString;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-@ToString
 @JsonFilter("wantedProperties")
 public class VesselDevice extends AWSIotDevice {
-    private Logger logger = Logger.getLogger(this.getClass());
+    private static Logger logger = LoggerFactory.getLogger(VesselDevice.class);
 
     public VesselDevice(String thingName) {
         super(thingName);

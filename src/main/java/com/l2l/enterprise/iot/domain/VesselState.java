@@ -1,10 +1,5 @@
 package com.l2l.enterprise.iot.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
 @SuppressWarnings("all")
 public class VesselState {
     private double longitude;
@@ -19,6 +14,9 @@ public class VesselState {
         this.timeStamp = timeStamp;
     }
 
+    public VesselState() {
+    }
+
     public VesselState deepCopy(){
         VesselState res = new VesselState();
         res.setTimeStamp(this.timeStamp);
@@ -26,5 +24,37 @@ public class VesselState {
         res.setLongitude(this.longitude);
         res.setVelocity(this.velocity);
         return res;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(double velocity) {
+        this.velocity = velocity;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

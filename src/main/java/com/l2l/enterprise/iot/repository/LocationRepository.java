@@ -1,8 +1,7 @@
 package com.l2l.enterprise.iot.repository;
 
-import iot.domain.Location;
-import iot.util.CsvUtil;
-import lombok.Data;
+import com.l2l.enterprise.iot.domain.Location;
+import com.l2l.enterprise.iot.util.CsvUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Service
 public class LocationRepository {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

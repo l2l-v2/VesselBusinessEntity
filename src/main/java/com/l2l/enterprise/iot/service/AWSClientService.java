@@ -6,7 +6,6 @@ import com.l2l.enterprise.iot.domain.AwsKey;
 import com.l2l.enterprise.iot.domain.IoTClient;
 import com.l2l.enterprise.iot.domain.VesselDevice;
 import com.l2l.enterprise.iot.util.CsvUtil;
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class AWSClientService {
     private static final Logger logger = LoggerFactory.getLogger(AWSClientService.class);
     private List<IoTClient> iotClients = new ArrayList<IoTClient>();
@@ -94,4 +92,12 @@ public class AWSClientService {
         return new VesselDevice(thingName);
     }
 
+
+    public List<IoTClient> getIotClients() {
+        return iotClients;
+    }
+
+    public void setIotClients(List<IoTClient> iotClients) {
+        this.iotClients = iotClients;
+    }
 }

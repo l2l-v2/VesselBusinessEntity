@@ -1,8 +1,7 @@
 package com.l2l.enterprise.iot.repository;
 
-import iot.domain.*;
-import iot.util.CsvUtil;
-import lombok.Data;
+import com.l2l.enterprise.iot.domain.*;
+import com.l2l.enterprise.iot.util.CsvUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Data
 public class TrackRepository {
     private static final Logger logger = LoggerFactory.getLogger(TrackRepository.class);
     private List<Track> tracks = new ArrayList<Track>();

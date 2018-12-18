@@ -4,10 +4,11 @@ import com.amazonaws.services.iot.client.AWSIotException;
 import com.amazonaws.services.iot.client.AWSIotQos;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import iot.domain.IoTClient;
-import iot.repos.CommonRepository;
-import iot.repos.LocationRepository;
-import org.apache.log4j.Logger;
+import com.l2l.enterprise.iot.domain.IoTClient;
+import com.l2l.enterprise.iot.repository.CommonRepository;
+import com.l2l.enterprise.iot.repository.LocationRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @SuppressWarnings("all")
 @Service
 public class EventHandler {
-    private static Logger logger = Logger.getLogger(EventHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(EventHandler.class);
     private static final AWSIotQos topicQos = AWSIotQos.QOS0;
     private static ObjectMapper objectMapper = new ObjectMapper();
 

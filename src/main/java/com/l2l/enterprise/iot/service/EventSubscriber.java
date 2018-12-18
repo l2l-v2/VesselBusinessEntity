@@ -6,7 +6,6 @@ import com.amazonaws.services.iot.client.AWSIotQos;
 import com.amazonaws.services.iot.client.AWSIotTopic;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,6 @@ import java.io.IOException;
  * Author : bqzhu
  */
 @SuppressWarnings("all")
-@Data
 public class EventSubscriber extends AWSIotTopic {
     private static final Logger logger = LoggerFactory.getLogger(EventSubscriber.class);
 
@@ -60,5 +58,13 @@ public class EventSubscriber extends AWSIotTopic {
         } catch (AWSIotException e) {
             e.printStackTrace();
         }
+    }
+
+    public EventHandler getEventHandler() {
+        return eventHandler;
+    }
+
+    public void setEventHandler(EventHandler eventHandler) {
+        this.eventHandler = eventHandler;
     }
 }
