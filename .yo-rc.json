@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.l2l.enterprise.iot",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.3.4",
+    "applicationType": "microservice",
+    "baseName": "VesselBusinessEntity",
+    "packageName": "com.l2l.enterprise.iot",
+    "packageFolder": "com/l2l/enterprise/iot",
+    "serverPort": "9051",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "no",
+    "devDatabaseType": "no",
+    "prodDatabaseType": "no",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MzhjOTZmNDI0ODYzYjJiZWQzMjFiODNhMmIzNzZjOGMzNGNjYTBhN2NhYjc1ZTY2NTcxNDQ4MzBlZGJkYTYzMTZhZDdhMzVlYzExNTFlODFmZWI4MzliZjZlZDMxNTBhMTZjMDkzODJlYzNhMTkzZmQ4NzNiYTk1MWM0N2Q4MTY=",
+    "enableTranslation": true,
+    "languages": [
+      "en",
+      "zh-cn"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
