@@ -99,7 +99,7 @@ public class AsyncTaskService {
     public void reportStep(String vid) throws InterruptedException, AWSIotException, JsonProcessingException {
         IoTClient ioTClient = awsClientService.findDeviceClient(vid);
         String updateShadowTopic = ioTClient.getUpdateAWSShadowTopic();
-        VesselDevice vesselDevice = ioTClient.getVesselDevice();
+         VesselDevice vesselDevice = ioTClient.getVesselDevice();
 
         Track track = trackRepository.findTrack(vid);
         long zoomInVal = commonRepository.getZoomInVal();
