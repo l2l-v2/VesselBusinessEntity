@@ -20,6 +20,23 @@ logging:
         com.l2l.enterprise.iot: DEBUG
 
 spring:
+    cloud:
+        refresh:
+            enabled: false
+        stream:
+            bindings:
+#                delaymsgConsumer:
+#                    destination: delaymsgConsumer
+#                    contentType: application/json
+#                    group: integration #@ no tested
+                delayServiceConfirm:
+                    destination: delayServiceConfirm
+                    contentType: application/json
+                    group: integration #@ no tested
+                delayDestinationUpdate:
+                    destination: delayDestinationUpdate
+                    contentType: application/json
+                    group: integration
     profiles:
         active: dev
         include:
@@ -48,6 +65,11 @@ spring:
         locator:
             discovery:
                 enabled: true
+    rabbitmq: # also we can add configuration here to bound with message broker.
+          host: localhost
+          port: 5672
+          username: guest
+          password: guest
 
 server:
     port: 9051
@@ -113,3 +135,14 @@ vessel:
 
 awsiot:
  keys: keys.csv
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+  endpoint:
+    health:
+      show-details: always
+    activiti:
+      enabled: true

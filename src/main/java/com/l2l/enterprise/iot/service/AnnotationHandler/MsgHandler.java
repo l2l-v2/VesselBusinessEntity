@@ -3,10 +3,7 @@ package com.l2l.enterprise.iot.service.AnnotationHandler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.l2l.enterprise.iot.channel.DelayMsgChannel;
-import com.l2l.enterprise.iot.domain.DelayMsg;
-import com.l2l.enterprise.iot.domain.Destination;
-import com.l2l.enterprise.iot.domain.IoTClient;
-import com.l2l.enterprise.iot.domain.VesselDevice;
+import com.l2l.enterprise.iot.domain.*;
 import com.l2l.enterprise.iot.repository.CommonRepository;
 import com.l2l.enterprise.iot.repository.LocationRepository;
 import com.l2l.enterprise.iot.repository.TrackRepository;
@@ -50,12 +47,13 @@ public class MsgHandler {
     private TrackRepository trackRepository;
 
     @StreamListener(value = DelayMsgChannel.DELAY_SERVICE_CONFIRM)
-    public void DelayMsgService(DelayMsg delayMsg) throws JsonProcessingException {
+    public void DelayMsgService(DelayMsg delay) throws JsonProcessingException {
         //根据得到的annotation 获得对应的 vid 的destinations 并处理时间 再返回
-        for(Map.Entry<String,List<Destination>>  entry : delayMsg.getDestinationMap().entrySet()){
-            String vid = entry.getKey();
-            entry.setValue(delay(vid,delayMsg.getDelayx(),delayMsg.getDelayy(),entry.getValue()));
-        }
+        DelayMsg delayMsg = (DelayMsg) delay;
+//        for(Map.Entry<String,List<Destination>>  entry : delayMsg.getDestinationMap().entrySet()){
+//            String vid = entry.getKey();
+//            entry.setValue(delay(vid,delayMsg.getDelayx(),delayMsg.getDelayy(),entry.getValue()));
+//        }
         delayMsg.setConnectorType("delayDestinationUpdate");
         org.springframework.messaging.Message<DelayMsg> delayMsgMessage = MessageBuilder.withPayload(delayMsg).setHeader("connectorType", delayMsg.getConnectorType()).build();
         binderAwareChannelResolver.resolveDestination(delayMsg.getConnectorType()).send((org.springframework.messaging.Message<?>) delayMsgMessage);

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.plugin2.message.Message;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class APIController {
@@ -54,12 +55,15 @@ public class APIController {
     }
     @Autowired
     BinderAwareChannelResolver binderAwareChannelResolver;
-    @RequestMapping(value = "vessel/delay/{time}" , method = RequestMethod.POST , produces = "application/json")
-    public void GlobalDelayMsg (@PathVariable("time") String delayTime){
+    @RequestMapping(value = "vessel/delay" , method = RequestMethod.POST )
+    public String GlobalDelayMsg (@RequestBody Map<String,String> delayTime){
         DelayMsg delayMsg = new DelayMsg("delaymsgConsumer");
-        delayMsg.setDelaytime(delayTime);
+        delayMsg.setDelayx(delayTime.get("delayx"));
+        delayMsg.setDelayy(delayTime.get("delayy"));
         delayMsg.setTopic("delay");
+        logger.info("hello");
         org.springframework.messaging.Message<DelayMsg> delayMsgMessage = MessageBuilder.withPayload(delayMsg).setHeader("connectorType", delayMsg.getConnectorType()).build();
         binderAwareChannelResolver.resolveDestination(delayMsg.getConnectorType()).send((org.springframework.messaging.Message<?>) delayMsgMessage);
+        return "getDelay";
     }
 }
